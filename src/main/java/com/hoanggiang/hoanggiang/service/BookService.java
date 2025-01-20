@@ -38,4 +38,7 @@ public class BookService {
     public void deleteBook(String id) {
         bookRepository.deleteById(id);
     }
+    public boolean existsByName(String name){
+        return this.bookRepository.existsByName(name);
+    }
 }

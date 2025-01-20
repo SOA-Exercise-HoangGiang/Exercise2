@@ -1,5 +1,7 @@
 package com.hoanggiang.hoanggiang.domain;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,9 +9,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Book {
     @Id
     private String id;
+
+    @NotBlank(message="Book name cannot be empty")
     private String name;
+
+    @Min(value = 0, message="Book price cannot be smaller than 0")
     private double price;
+
+    @NotBlank(message="Book author cannot be empty")
     private String category;
+
+    @NotBlank(message="Book author cannot be empty")
     private String author;
 
     public String getId() {

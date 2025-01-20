@@ -1,13 +1,14 @@
 package com.hoanggiang.hoanggiang.controller;
 
 import com.hoanggiang.hoanggiang.domain.Book;
+import com.hoanggiang.hoanggiang.exception.ValidException;
 import com.hoanggiang.hoanggiang.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,33 +23,39 @@ public class BookController {
 
     @GetMapping
     @Operation(summary = "Lấy tất cả sách", description = "Trả về danh sách tất cả sách trong cơ sở dữ liệu.")
-    public List<Book> getAllBooks() {
-        return bookService.getAllBooks();
+    public ResponseEntity<List<Book>> getAllBooks() {
+        return ResponseEntity.ok(bookService.getAllBooks());
     }
 
     @PostMapping
     @Operation(summary = "Tạo sách mới", description = "Thêm một sách mới vào cơ sở dữ liệu.")
-    public Book createBook(@RequestBody Book book) {
-        return bookService.createBook(book);
+    public ResponseEntity<Book> createBook(@Valid @RequestBody Book book) throws ValidException {
+        if(this.bookService.existsByName(book.getName())){
+            throw new ValidException("Book name is exists");
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.bookService.createBook(book));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Lấy sách theo ID", description = "Trả về chi tiết sách dựa vào ID.")
-    public Book getBookById(
-            @Parameter(description = "ID của sách cần tìm", required = true)
+    public ResponseEntity<Book> getBookById(
             @PathVariable("id") String id) {
-        return bookService.getBookById(id);
+        return ResponseEntity.ok(bookService.getBookById(id));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Cập nhật sách", description = "Cập nhật thông tin sách dựa trên ID.")
-    public Book updateBook(@PathVariable("id") String id, @RequestBody Book updatedBook) {
-        return bookService.updateBook(id, updatedBook);
+    public ResponseEntity<Book> updateBook(@PathVariable("id") String id, @Valid @RequestBody Book book) throws ValidException {
+        if(this.bookService.existsByName(book.getName())){
+            throw new ValidException("Book name is exists");
+        }
+        return ResponseEntity.ok(bookService.updateBook(id, book));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Xóa sách", description = "Xóa sách khỏi cơ sở dữ liệu dựa trên ID.")
-    public void deleteBook(@PathVariable("id") String id) {
-        bookService.deleteBook(id);
+    public ResponseEntity<Void> deleteBook(@PathVariable("id") String id) {
+        this.bookService.deleteBook(id);
+        return ResponseEntity.ok(null);
     }
 }
