@@ -14,7 +14,8 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalException {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<RestResponse<Map<String, String>>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    public ResponseEntity<RestResponse<Map<String, String>>>
+                handleValidationExceptions(MethodArgumentNotValidException ex) {
         RestResponse<Map<String, String>> res = new RestResponse<>();
 
         Map<String, String> errors = new HashMap<>();

@@ -1,5 +1,6 @@
 package com.hoanggiang.hoanggiang.domain;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
@@ -13,7 +14,7 @@ public class Book {
     @NotBlank(message="Book name cannot be empty")
     private String name;
 
-    @Min(value = 0, message="Book price cannot be smaller than 0")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Book price must be greater than 0")
     private double price;
 
     @NotBlank(message="Book author cannot be empty")
