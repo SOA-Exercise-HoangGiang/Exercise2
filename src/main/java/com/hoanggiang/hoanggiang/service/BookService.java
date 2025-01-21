@@ -1,6 +1,7 @@
 package com.hoanggiang.hoanggiang.service;
 
 import com.hoanggiang.hoanggiang.domain.Book;
+import com.hoanggiang.hoanggiang.repository.BookCustomRepository;
 import com.hoanggiang.hoanggiang.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,11 @@ import java.util.List;
 @Service
 public class BookService {
     private final BookRepository bookRepository;
+    private final BookCustomRepository bookCustomRepository;
 
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository,BookCustomRepository bookCustomRepository) {
         this.bookRepository = bookRepository;
+        this.bookCustomRepository = bookCustomRepository;
     }
 
     public List<Book> getAllBooks() {
@@ -38,7 +41,12 @@ public class BookService {
     public void deleteBook(String id) {
         bookRepository.deleteById(id);
     }
+
     public boolean existsByName(String name){
         return this.bookRepository.existsByName(name);
+    }
+
+    public List<Book> searchBooks(String name, Double price, String category, String author) {
+        return this.bookCustomRepository.searchBooks(name, price, category, author);
     }
 }

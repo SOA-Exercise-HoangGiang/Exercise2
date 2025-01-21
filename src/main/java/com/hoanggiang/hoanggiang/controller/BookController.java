@@ -58,4 +58,14 @@ public class BookController {
         this.bookService.deleteBook(id);
         return ResponseEntity.ok(null);
     }
+
+    @GetMapping("/search")
+    @Operation(summary = "Tìm kiếm sách", description = "Tìm kiếm sách theo name, price, category, author.")
+    public ResponseEntity<List<Book>> searchBooks(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Double price,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String author) {
+        return ResponseEntity.ok(bookService.searchBooks(name, price, category, author));
+    }
 }
