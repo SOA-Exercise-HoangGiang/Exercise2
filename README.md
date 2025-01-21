@@ -2,11 +2,15 @@
 
 ## Exercise 2 - La Hoàng Giang
 
+### Cấu trúc thư mục
+
+
+
 ### Mô tả các kiến thức đã áp dụng 
 
 - **Triển khai các API bằng Swagger**:
   
-![image](https://github.com/user-attachments/assets/43a74e97-ce23-45f4-91df-3a9961dacbe6)
+![image](https://github.com/user-attachments/assets/fc687541-7a61-49dc-8af6-404185ca11a7)
 
 - **Sử dụng cơ sở dữ liệu MongoDB**:
 
@@ -30,7 +34,9 @@ Xử lý lỗi tên trùng nhau:
 
 ![image](https://github.com/user-attachments/assets/5981965d-34db-49f2-a672-8edf320cbc1f)
 
-- **Kết quả đạt được**:
+***
+
+### Kết quả đạt được:
   
 **1. Lấy tất cả sách**
    
@@ -50,7 +56,7 @@ Xử lý lỗi tên trùng nhau:
   
 ![image](https://github.com/user-attachments/assets/10832026-4220-4af5-8af2-cf60ab2325c8)
 
-- Trường hợp bỏ trống các fields như name, author, category hay price <= 0
+- Trường hợp bỏ trống các fields như name, author, category hay price <= 0:
   
 ![image](https://github.com/user-attachments/assets/15522218-8b5d-428a-92da-91b8edc8bffd)
 
@@ -64,10 +70,17 @@ Xử lý lỗi tên trùng nhau:
   
 ![image](https://github.com/user-attachments/assets/5260c05a-9081-47b3-92dc-0e058501e34f)
 
-- Trường hợp bỏ trống các fields như name, author, category hay price <= 0
+- Trường hợp bỏ trống các fields như name, author, category hay price <= 0:
   
 ![image](https://github.com/user-attachments/assets/fa08e407-880d-4e27-bf35-e31163647046)
 
 **5. Xóa sách theo ID**
 
 ![image](https://github.com/user-attachments/assets/c35e32e2-1eb9-40c8-8451-530dd593d488)
+
+**6. Tìm kiếm sách ID name, price, category, author (bổ sung thêm)**
+
+![image](https://github.com/user-attachments/assets/7a37ca21-2fb8-495a-beb8-646c166dc474)
+
+![image](https://github.com/user-attachments/assets/213963dd-fa80-4d58-b5cc-4831e936add0)
+
