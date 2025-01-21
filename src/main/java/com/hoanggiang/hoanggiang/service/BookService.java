@@ -18,15 +18,15 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return this.bookRepository.findAll();
     }
 
     public Book getBookById(String id) {
-        return bookRepository.findById(id).orElseThrow();
+        return this.bookRepository.findById(id).orElseThrow();
     }
 
     public Book createBook(Book book) {
-        return bookRepository.save(book);
+        return this.bookRepository.save(book);
     }
 
     public Book updateBook(String id, Book updatedBook) {
@@ -35,11 +35,11 @@ public class BookService {
         book.setPrice(updatedBook.getPrice());
         book.setCategory(updatedBook.getCategory());
         book.setAuthor(updatedBook.getAuthor());
-        return bookRepository.save(book);
+        return this.bookRepository.save(book);
     }
 
     public void deleteBook(String id) {
-        bookRepository.deleteById(id);
+        this.bookRepository.deleteById(id);
     }
 
     public boolean existsByName(String name){
