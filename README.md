@@ -4,7 +4,7 @@
 
 ### Cấu trúc thư mục
 
-
+![image](https://github.com/user-attachments/assets/5282549a-7b66-4658-8b46-329f702a48bb)
 
 ### Mô tả các kiến thức đã áp dụng 
 
